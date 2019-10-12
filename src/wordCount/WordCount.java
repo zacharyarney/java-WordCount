@@ -15,5 +15,15 @@ public class WordCount {
                 wordCounts.put(s, 1);
             }
         }
+
+        // System.out.println(Arrays.asList(wordCounts));
+        ArrayList<HashMap.Entry<String, Integer>> sortedMap = new ArrayList<>(wordCounts.entrySet());
+        sortedMap.sort(Comparator.comparingInt(Map.Entry::getValue));
+        // Collections.reverse(sortedMap);
+
+        System.out.println("50 most-used words:");
+        for (int i = sortedMap.size() - 1; i > sortedMap.size() - 51; i--) {
+            System.out.println('"' + sortedMap.get(i).getKey() + "\" appears " + sortedMap.get(i).getValue() + " times");
+        }
     }
 }
